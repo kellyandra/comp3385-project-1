@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Property;
 
 class PropertyController extends Controller
 {
@@ -37,7 +38,7 @@ class PropertyController extends Controller
 
         }
 
-        // Save client data to the database
+        // Save property data to the database
         $property = new Property();
         $property->title = $request->title;
         $property->number_of_bedrooms = $request->number_of_bedrooms;
@@ -57,4 +58,18 @@ class PropertyController extends Controller
 
         return redirect()->route('properties.index')->with('success', 'Property was successfully added');
     }
+
+    public function show($id)
+    {
+        $property = Property::findOrFail($id);
+        return view('properties.show', compact('property'));
+    }
+
+
+    public function index()
+{
+       $properties = Property::all();
+
+       return view('properties.index', compact('properties'));
+}
 }
