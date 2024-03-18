@@ -17,16 +17,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
+                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/about') }}">About</a>
+                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="{{ url('/about') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/properties/create') }}">New Property</a>
+                    <a class="nav-link {{ request()->is('properties/create') ? 'active' : '' }}" href="{{ url('/properties/create') }}">New Property</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/properties') }}">Properties</a>
+                    <a class="nav-link {{ request()->is('properties') ? 'active' : '' }}" href="{{ url('/properties') }}">Properties</a>
                 </li>
             </ul>
         </div>
